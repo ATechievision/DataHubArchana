@@ -22,7 +22,7 @@ jobs:
         FILE_PATH: ./metadata_ingestion/glossary_yaml_ingestion/taxi-driver/
         S3_BUCKET_NAME: datahubch/github-data
       run: |
-        aws s3 cp $FILE_PATH s3://$S3_BUCKET_NAME/ --region eu-west-1
+        aws s3 cp $FILE_PATH s3://$S3_BUCKET_NAME/ --region eu-west-1 --recursive
     - name: Copy File to EC2
       env:
         EC2_INSTANCE_ID: i-02134150d4b26a52c
