@@ -20,8 +20,8 @@ jobs:
         
     - name: Copy File to EC2
       env:
-        EC2_INSTANCE_ID: i-06926d2641d5b2adb
-        FILE_PATH: ./metadata_ingestion/term-ingesion/csx/transdev-businessglossary.yml
+        EC2_INSTANCE_ID: i-02134150d4b26a52c
+        FILE_PATH: ./metadata_ingestion/glossary_yaml_ingestion/taxi-driver/*.yml
         DESTINATION_PATH: /home/ubuntu/DataHubIngestionCICD
       run: |
         aws ssm start-session --target $EC2_INSTANCE_ID --document-name AWS-StartPortForwardingSession --parameters '{"portNumber":["80"],"localPortNumber":["8080"]}' --region eu-west-1
