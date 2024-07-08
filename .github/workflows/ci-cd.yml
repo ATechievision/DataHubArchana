@@ -1,0 +1,28 @@
+---
+name: Deploy to DataHub running on EC2
+on:
+  # Trigger the workflow on push to main branch
+  push:
+    branches: [ main ]
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+        
+    - name: Copy File to EC2
+      env:
+        EC2_INSTANCE_ID: i-06926d2641d5b2adb
+        FILE_PATH: ./metadata_ingestion/term-ingesion/csx/transdev-businessglossary.yml
+        DESTINATION_PATH: /home/ubuntu/DataHubIngestionCICD
+      run: |
+        aws ssm start-session --target $EC2_INSTANCE_ID --document-name AWS-StartPortForwardingSession --parameters '{"portNumber":["80"],"localPortNumber":["8080"]}' --region eu-west-1
+        aws ssm put-file --source $FILE_PATH --destination $DESTINATION_PATH --name transdev-businessglossary.yml --region eu-west-1
