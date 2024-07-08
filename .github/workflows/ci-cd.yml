@@ -17,14 +17,12 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
-		
     - name: Upload file to S3
       env:
         FILE_PATH: ./metadata_ingestion/glossary_yaml_ingestion/taxi-driver/*.yml
         S3_BUCKET_NAME: datahubch/github-data
       run: |
         aws s3 cp $FILE_PATH s3://$S3_BUCKET_NAME/ --region eu-west-1
-        
     - name: Copy File to EC2
       env:
         EC2_INSTANCE_ID: i-02134150d4b26a52c
