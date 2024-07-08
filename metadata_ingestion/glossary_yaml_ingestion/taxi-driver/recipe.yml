@@ -1,0 +1,6 @@
+source:
+  type: datahub-business-glossary
+  config:
+    # coordinates
+    file: glossary-terms.yml
+    enable_auto_id: true
