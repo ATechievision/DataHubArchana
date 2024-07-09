@@ -23,14 +23,3 @@ jobs:
         S3_BUCKET_NAME: datahubch/github-data
       run: |
         aws s3 cp $FILE_PATH s3://$S3_BUCKET_NAME/ --region eu-west-1 --recursive
-    - name: Copy File to EC2
-      env:
-        EC2_INSTANCE_ID: i-02134150d4b26a52c
-        S3_BUCKET_NAME: datahubch/github-data
-        DESTINATION_PATH: /home/ubuntu/DataHubIngestionCICD
-      run: |
-        aws ssm send-command \
-          --instance-ids $EC2_INSTANCE_ID \
-          --document-name "AWS-RunShellScript" \
-          --parameters '{"commands":["aws s3 cp s3://$S3_BUCKET_NAME/*.yml $DESTINATION_PATH/"], "executionTimeout":["3600"]}' \
-          --region eu-west-1
