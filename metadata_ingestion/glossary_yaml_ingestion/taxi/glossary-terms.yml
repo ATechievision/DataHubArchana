@@ -2,284 +2,44 @@ version: '1'
 source: DataHub
 owners:
   users:
-    - susant mallick
     - archana satapathy
 url: "https://github.com/datahub-project/datahub/"
 nodes:
-  - name: taxidriver
-    description: Transaction details
+  - name: customers
+    description: Customer table data
     knowledge_links:
       - label: Wiki link for classification
-        url: "https://www.investopedia.com/terms/t/transaction.asp"
+        url: "https://en.wikipedia.org/wiki/"
     custom_properties:
-      is_confidential: 'true'
+      is_confidential: 'false'
     terms:
-      - name: driver id
-        description: Unique identifier for each taxi driver.
-      - name: driver name
-        description: Full name of the taxi driver.
-      - name: driver card id
-        description: Identification card number of the taxi driver.
-      - name: driver address
-        description: Residential address of the taxi driver.
-      - name: first name
-        description: First name of the taxi driver.
-      - name: middle name
-        description: Middle name of the taxi driver.
-      - name: last name
-        description: Last name of the taxi driver.
-      - name: gender
-        description: Gender of the taxi driver.
-      - name: birthday
-        description: Date of birth of the taxi driver.
-      - name: mobile
-        description: Mobile number of the taxi driver.
+      - name: customer_id
+        description: A unique identifier assigned to each customer in the system.
+      - name: first_name
+        description:The first name of the customer.
+      - name: last_name
+        description: The last name or family name of the customer.
       - name: email
-        description: Email address of the taxi driver.
-      - name: active from
-        description: Date from which the taxi driver is active.
-      - name: active to
-        description: Date until which the taxi driver is active.
-      - name: created by
-        description: User who created the record of the taxi driver.
-      - name: updated by
-        description: User who last updated the record of the taxi driver.
-      - name: creation date
-        description: Timestamp when the record of the taxi driver was created.
-  - name: trip
-    description: Details of each trip
-    terms:
-      - name: trip id
-        description: Unique identifier for each trip.
-      - name: route id
-        description: Identifier for the route taken during the trip.
-      - name: stop id
-        description: Identifier for the stop during the trip.
-      - name: stop name
-        description: Name of the stop during the trip.
-      - name: week beginning
-        description: Start date of the week when the trip took place.
-      - name: number of boardings
-        description: Total number of boardings during the trip.
-  - name: transactions
-    description: Transaction records
-    terms:
-      - name: txn id
-        description: Unique identifier for each transaction.
-      - name: txn date
-        description: Date of the transaction.
-      - name: txn time
-        description: Time of the transaction.
-      - name: consumption
-        description: Amount of consumption during the transaction.
-  - name: route
-    description: Details of each route
-    terms:
-      - name: object id
-        description: Unique identifier for each route.
-      - name: route number
-        description: Number assigned to the route.
-      - name: route code
-        description: Code assigned to the route.
-      - name: route name
-        description: Name of the route.
-      - name: mode
-        description: Mode of transportation for the route.
-      - name: agency name
-        description: Name of the agency operating the route.
-      - name: creation date
-        description: Date the route was created.
-      - name: created by
-        description: User who created the route record.
-      - name: updated by
-        description: User who updated the route record.
-      - name: last updated by
-        description: User who last updated the route record.
-      - name: valid till
-        description: Date until which the route is valid.
-      - name: valid since
-        description: Date from which the route is valid.
-  - name: rides
-    description: Details of each ride
-    terms:
-      - name: ride id
-        description: Unique identifier for each ride.
-      - name: transport type
-        description: Type of transport used for the ride.
-      - name: booking
-        description: Booking information for the ride.
-      - name: departure street
-        description: Street from which the ride departs.
-      - name: description
-        description: Detailed description of the ride.
-      - name: departure house no
-        description: House number of the departure location.
-      - name: departure post code
-        description: Post code of the departure location.
-      - name: departure point
-        description: Specific departure point for the ride.
-      - name: departure zone
-        description: Zone of the departure location.
-      - name: destination street
-        description: Street of the destination location.
-      - name: destination post code
-        description: Post code of the destination location.
-      - name: reservation date time
-        description: Date and time the ride was reserved.
-      - name: boarding date time
-        description: Date and time the ride was boarded.
-      - name: arrival date time
-        description: Date and time the ride arrived.
-      - name: passenger name
-        description: Name of the passenger.
-      - name: passenger contact
-        description: Contact information of the passenger.
-      - name: driver id
-        description: Identifier of the driver for the ride.
-      - name: vehicle id
-        description: Identifier of the vehicle used for the ride.
-      - name: fare
-        description: Fare charged for the ride.
-      - name: payment status
-        description: Payment status for the ride.
-  - name: invoice
-    description: Details of each invoice
-    terms:
-      - name: invoice id
-        description: Unique identifier for each invoice.
-      - name: trip business day
-        description: Business day of the trip associated with the invoice.
-      - name: trip id
-        description: Identifier of the trip associated with the invoice.
-      - name: invoiceable
-        description: Indicates if the trip is invoiceable.
-      - name: last updated by
-        description: User who last updated the invoice.
-      - name: last update date
-        description: Date and time the invoice was last updated.
-      - name: invoice number
-        description: Number assigned to the invoice.
-      - name: invoice date
-        description: Date the invoice was created.
-      - name: due date
-        description: Date the invoice is due.
-      - name: total amount
-        description: Total amount of the invoice.
-      - name: payment status
-        description: Payment status of the invoice.
-      - name: customer id
-        description: Identifier of the customer associated with the invoice.
-      - name: notes
-        description: Additional notes or comments related to the invoice.
-  - name: incidents
-    description: Details of each incident
-    terms:
-      - name: incident id
-        description: Unique identifier for each incident.
-      - name: route id
-        description: Identifier of the route associated with the incident.
-      - name: description
-        description: Description of the incident.
-      - name: timestamp
-        description: Date and time the incident occurred.
-  - name: company_vehicle
-    description: Details of each company vehicle
-    terms:
-      - name: vehicle id
-        description: Unique identifier for each vehicle. Auto-increments starting from 1.
-      - name: company id
-        description: Identifier of the company that owns the vehicle.
-      - name: vehicle type
-        description: Type of the vehicle.
-      - name: license plate
-        description: License plate number of the vehicle.
-      - name: capacity
-        description: Capacity of the vehicle.
-      - name: status
-        description: Current status of the vehicle.
-      - name: last service date
-        description: Date the vehicle was last serviced.
-      - name: active from
-        description: Timestamp indicating when the vehicle became active.
-      - name: active to
-        description: Timestamp indicating when the vehicle was deactivated.
-  - name: company
-    description: Details of each company
-    terms:
-      - name: company id
-        description: Unique identifier for each company. Auto-increments starting from 1.
-      - name: company name
-        description: Name of the company.
-      - name: company type
-        description: Type of the company.
-      - name: vat number
-        description: VAT number of the company.
-      - name: email
-        description: Email address of the company.
-      - name: last updated by
-        description: User who last updated the company record.
-      - name: kvk number
-        description: KVK number of the company.
-      - name: valid from
-        description: Date from which the company is valid.
-      - name: valid to
-        description: Date until which the company is valid.
-      - name: address
-        description: Address of the company.
-      - name: iban number
-        description: IBAN number of the company.
-      - name: ip address
-        description: IP address of the company.
-      - name: location id
-        description: Identifier of the location associated with the company.
-  - name: bus_stop
-    description: Details of each bus stop
-    terms:
-      - name: stop no
-        description: Unique identifier for each bus stop.
-      - name: location
-        description: Location of the bus stop.
-      - name: x
-        description: X coordinate of the bus stop.
-      - name: y
-        description: Y coordinate of the bus stop.
-      - name: lighting
-        description: Lighting condition at the bus stop.
-      - name: district
-        description: District where the bus stop is located.
-      - name: status
-        description: Status of the bus stop.
-      - name: valid till
-        description: Date until which the bus stop is valid.
-      - name: valid since
-        description: Date from which the bus stop is valid.
-  - name: bus_reduced_fare
-    description: Details of each bus reduced fare
-    terms:
-      - name: id
-        description: Unique identifier for each reduced fare record.
-      - name: transport
-        description: Type of transport associated with the reduced fare.
-      - name: borough
-        description: Borough where the reduced fare is applicable.
-      - name: category
-        description: Category of the reduced fare.
-      - name: journeys
-        description: Number of journeys covered by the reduced fare.
-      - name: valid since
-        description: Date from which the reduced fare is valid.
-      - name: valid till
-        description: Date until which the reduced fare is valid.
-      - name: route id
-        description: Identifier of the route associated with the reduced fare.
-  - name: bus_profile
-    description: Profile details of bus operations
-    terms:
-      - name: profile year
-        description: Year of the bus profile.
-      - name: passenger trips
-        description: Total number of passenger trips.
-      - name: total passenger miles
-        description: Total passenger miles traveled.
-      - name: bus routes
-        description: Total number of bus routes.
+        description: The email address associated with the customer.
+      - name: join_date
+        description: The date when the customer registered or joined the system.
+  - name: financials
+    description: Fanncial table data
+      - name: financials_id
+        description: A unique identifier assigned to each financial transaction or record.
+      - name: transaction_date
+        description: The date when a financial transaction occurred.
+      - name: amount
+        description: The monetary value involved in the transaction.
+      - name: TRANSACTION_TYPE
+        description: The email address associated with the customer.
+  - name: sales_data
+    description: Sales data
+      - name: order_id
+        description: A unique identifier for each order placed by a customer.
+      - name: order_date
+        description: The date when an order was placed by the customer.
+      - name: total_amount
+        description: The total value of the order, including all applicable items, taxes, and discounts.
+      - name: order_status
+        description: The current status of the order, which indicates whether the order has been completed, pending, cancelled, or is in some other state in the order lifecycle.
