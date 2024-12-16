@@ -28,7 +28,7 @@ jobs:
         run: chmod 600 $HOME/.ssh/known_hosts
         
       - name: Copy files to EC2 instance
-        run: scp -r ./metadata_ingestion/glossary_yaml_ingestion/taxi ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/ubuntu/datahubch/term-ingestion/taxi
+        run: scp -r ./metadata_ingestion/glossary_yaml_ingestion/taxi ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/ubuntu/ingestion_file
 
       - name: Run DataHub ingest command for creating business glossary terms/term groups
         run: ssh ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/datahubch/term-ingestion/taxi && datahub ingest -c recipe.yml"
