@@ -25,6 +25,7 @@ nodes:
         description: The date when the customer registered or joined the system.
   - name: financials
     description: Fanncial table data
+    terms:
       - name: financials_id
         description: A unique identifier assigned to each financial transaction or record.
       - name: transaction_date
@@ -35,6 +36,7 @@ nodes:
         description: The email address associated with the customer.
   - name: sales_data
     description: Sales data
+    terms:
       - name: order_id
         description: A unique identifier for each order placed by a customer.
       - name: order_date
